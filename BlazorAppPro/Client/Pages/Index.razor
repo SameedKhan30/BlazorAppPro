@@ -1,0 +1,58 @@
+﻿@page "/"
+@using BlazorAppPro.Shared
+@using Syncfusion.Blazor.Grids
+
+<SfGrid DataSource="@Employees">
+    <GridColumn>
+        <GridColumn Field=@nameof(Employee.EmployeeId) HeaderText="ID"></GridColumn>
+        <GridColumn Field=@nameof(Employee.FirstName) HeaderText="First Name"></GridColumn>
+        <GridColumn Field=@nameof(Employee.LastName) HeaderText="Last Name"></GridColumn>
+        <GridColumn Field=@nameof(Employee.Email) HeaderText="Email"></GridColumn>
+    </GridColumn>
+</SfGrid>
+@code{
+    public List<Employee> Employees { get; set; }
+    protected override void OnInitialized()
+    {
+        Employees = LoadData();
+     
+    }
+    private List<Employee> LoadData()
+    {
+        Employee e1 = new Employee
+            {
+                EmployeeId = 1,
+                FirstName = "John",
+                LastName = "Hastings",
+                Email = "john@program.com",
+                DateOfBirth = new DateTime(1980, 10, 5),
+                Gender = Gender.Male,
+                Department = new Department { DepartmentId = 1, DepartmentName = "IT" },
+                photoPath = "images/john.png"
+            };
+        Employee e2 = new Employee
+            {
+                EmployeeId = 2,
+                FirstName = "Sora",
+                LastName = "Hastings",
+                Email = "sora@program.com",
+                DateOfBirth = new DateTime(1985, 9, 23),
+                Gender = Gender.Female,
+                Department = new Department { DepartmentId = 1, DepartmentName = "IT" },
+                photoPath = "images/john.png"
+            };
+        Employee e3 = new Employee
+            {
+                EmployeeId = 3,
+                FirstName = "Mary",
+                LastName = "Smith",
+                Email = "mary.Smith@program.com",
+                DateOfBirth = new DateTime(1982, 12, 12),
+                Gender = Gender.Male,
+                Department = new Department { DepartmentId = 1, DepartmentName = "IT" },
+                photoPath = "images/john.png"
+            };
+        return new List<Employee> { e1,e2,e3};
+    }
+
+}
